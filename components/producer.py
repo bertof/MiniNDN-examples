@@ -1,3 +1,6 @@
+from os.path import abspath
+
+from minindn.apps.app_manager import AppManager
 from minindn.apps.application import Application
 from mininet.log import info, debug
 
@@ -16,7 +19,7 @@ class ProducerService(Application):
             except KeyError:
                 prefix = ""
             try:
-                domain = "-d %s/%s " % (DOMAINS_PATH, node_args["domain"])
+                domain = "-d %s " % abspath(node_args["domain"])
             except KeyError:
                 domain = ""
             try:
@@ -51,3 +54,19 @@ class ProducerService(Application):
 
         debug("%s executing %s\n" % (self.node.name, command))
         super(ProducerService, self).start(command, logfile=logfile, envDict=envDict)
+
+
+def setup_producers(network, producer_nodes):
+    nodes_args = {}
+    for i, node_name in enumerate(sorted(network.groups["producers"])):
+        nodes_args[node_name] = {
+            "prefix": "/ndn/%s-site/%s" % (node_name, node_name),
+            "n_producers": len(producer_nodes),
+            "i_producer": i
+        }
+
+        if network.domain_file is not None:
+            nodes_args[node_name]["domain"] = network.domain_file
+
+    producers_s = AppManager(network, producer_nodes, ProducerService, nodes_args=nodes_args)
+    return producers_s

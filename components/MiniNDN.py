@@ -34,14 +34,14 @@ class MyMinindn(Minindn):
             default=Nfdc.PROTOCOL_UDP,
             choices=[Nfdc.PROTOCOL_UDP, Nfdc.PROTOCOL_TCP, Nfdc.PROTOCOL_ETHER])
         parser.add_argument(
-            '--routing', dest='routingType', default='link-state',
+            "-r", '--routing', dest='routingType', default='link-state',
             choices=['link-state', 'hr', 'dry'],
             help="Choose routing type, dry = link-state is used but hr is calculated for comparison.")
         parser.add_argument("--domain_size", type=int, help="Maximum size of the domain")
         parser.add_argument(
-            "cs_strategy", help="Strategy to use during the simulation",
-            choices=["lru", "lfu", "priority_fifo", "popularity"])
-        parser.add_argument("domain", help="Path to domain file", )
+            "-c", "--cs_strategy", help="Strategy to use during the simulation",
+            choices=["lru", "lfu", "priority_fifo", "popularity"], default="lru")
+        parser.add_argument("-d", "--domain", help="Path to domain file", type=str)
         parser.add_argument("topology", help="Topology YAML file")
 
         return parser
@@ -55,9 +55,11 @@ class MyMinindn(Minindn):
         name_mapping = {}
         environments = {}
         groups = {}
-        for group in ["attackers", "producers", "consumers", "aggregators", "routers"]:
+        for group in topology_data.keys():
+            if group == "connections":
+                continue
             groups[group] = []
-            if topology_data[group] is not None:
+            if topology_data.get(group) is not None:
                 for node, env in topology_data[group].items():
                     node_name = "%s_%s" % (group[:2].upper(), node)
                     name_mapping[node] = node_name

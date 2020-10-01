@@ -5,7 +5,7 @@ routers:
   B:
     LAT: 0
     LON: 0
-producer:
+producers:
   C:
     LAT: -1
     LON: 0
