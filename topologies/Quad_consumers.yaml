@@ -2,22 +2,23 @@ routers:
   B:
     LAT: 1
     LON: 0
-  C:
-    LAT: 1
-    LON: 1
+
   D:
     LAT: 0
     LON: 1
   F:
     LAT: -1
     LON: 0
-  G:
-    LAT: -1
-    LON: -1
   H:
     LAT: 0
     LON: -1
 consumers:
+  C:
+    LAT: 1
+    LON: 1
+  G:
+    LAT: -1
+    LON: -1
 attackers:
 producers:
   A:

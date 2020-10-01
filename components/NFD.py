@@ -3,8 +3,8 @@ from pprint import pformat
 import minindn
 from minindn.apps.application import Application
 from minindn.apps.nfd import Nfd
-from mininet.log import info
 from minindn.helpers.nfdc import Nfdc
+from mininet.log import info
 
 from components.MiniNDN import MyMinindn
 

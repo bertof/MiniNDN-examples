@@ -1,8 +1,9 @@
 from logging import debug
 
+from minindn.apps.app_manager import AppManager
 from minindn.apps.application import Application
 
-from components import EXECUTABLES_PATH
+from components import EXECUTABLES_PATH, BASE_PATH
 
 
 class ConsumerService(Application):
@@ -51,7 +52,7 @@ class ConsumerService(Application):
         self.prefix = prefixes
         self.cmd = \
             delay + \
-            EXECUTABLES_PATH + "/venv/bin/python " + \
+            BASE_PATH + "/venv/bin/python " + \
             EXECUTABLES_PATH + "/consumer.py " + \
             prefixes + interval + domain_range + zipf + length + dry + target
 
@@ -65,3 +66,11 @@ class ConsumerService(Application):
 
         debug("%s executing %s\n" % (self.node.name, command))
         super(ConsumerService, self).start(command, logfile=logfile, envDict=envDict)
+
+
+def setup_consumers(network, consumers, zipf=None, interval=None, range=None, target=None):
+    return AppManager(
+        network, consumers, ConsumerService,
+        target=target, zipf=zipf,
+        interval=interval, range=range,
+        prefixes=' '.join(["/ndn/%s-site/%s" % (p, p) for p in sorted(network.groups["producers"])]))

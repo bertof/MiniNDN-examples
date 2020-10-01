@@ -1,0 +1,15 @@
+routers:
+  B:
+    LAT: 0
+    LON: 0
+producers:
+  C:
+    LAT: -1
+    LON: 0
+consumers:
+  A:
+    LAT: 1
+    LON: 0
+connections:
+  - A: B
+  - B: C

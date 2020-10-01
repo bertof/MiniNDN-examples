@@ -19,7 +19,7 @@ class ProducerService(Application):
             except KeyError:
                 prefix = ""
             try:
-                domain = "-d %s " % abspath(node_args["domain"])
+                domain = "-d %s " % node_args["domain_file"]
             except KeyError:
                 domain = ""
             try:
@@ -56,17 +56,15 @@ class ProducerService(Application):
         super(ProducerService, self).start(command, logfile=logfile, envDict=envDict)
 
 
-def setup_producers(network, producer_nodes):
+def setup_producers(network, producers):
     nodes_args = {}
     for i, node_name in enumerate(sorted(network.groups["producers"])):
         nodes_args[node_name] = {
+            "domain_file": network.domain_file,
             "prefix": "/ndn/%s-site/%s" % (node_name, node_name),
-            "n_producers": len(producer_nodes),
+            "n_producers": len(producers),
             "i_producer": i
         }
 
-        if network.domain_file is not None:
-            nodes_args[node_name]["domain"] = network.domain_file
-
-    producers_s = AppManager(network, producer_nodes, ProducerService, nodes_args=nodes_args)
+    producers_s = AppManager(network, producers, ProducerService, nodes_args=nodes_args)
     return producers_s
