@@ -1,0 +1,167 @@
+attackers:
+  A1:
+    LAT: 42.1
+    LON: 35.2
+  A2:
+    LAT: 43.1
+    LON: 35.4
+  A3:
+    LAT: 41.2
+    LON: 35.6
+  A4:
+    LAT: 41.4
+    LON: 39.7
+consumers:
+  C1:
+    LAT: 43.5
+    LON: 34.2
+  C2:
+    LAT: 41.5
+    LON: 39.5
+  C3:
+    LAT: 47.8
+    LON: 33.4
+  C4:
+    LAT: 40.2
+    LON: 38.5
+  C5:
+    LAT: 41.5
+    LON: 36.9
+  C6:
+    LAT: 43.9
+    LON: 31.6
+  C7:
+    LAT: 44.6
+    LON: 33.0
+  C8:
+    LAT: 43.4
+    LON: 35.8
+producers:
+  P1:
+    LAT: 45.4
+    LON: 36.3
+  P2:
+    LAT: 43.7
+    LON: 33.4
+  P3:
+    LAT: 42.6
+    LON: 34.6
+  P4:
+    LAT: 42.3
+    LON: 34.6
+  P5:
+    LAT: 41.6
+    LON: 32.1
+  P6:
+    LAT: 43.9
+    LON: 35.6
+routers:
+  R2:
+    LAT: 43.5
+    LON: 34.7
+  R3:
+    LAT: 45.8
+    LON: 36.3
+  R4:
+    LAT: 42.8
+    LON: 34.3
+  R6:
+    LAT: 42.0
+    LON: 30.2
+  R7:
+    LAT: 43.8
+    LON: 38.6
+  R8:
+    LAT: 43.2
+    LON: 30.5
+  R9:
+    LAT: 41.4
+    LON: 36.1
+  R10:
+    LAT: 43.7
+    LON: 36.5
+  R11:
+    LAT: 43.2
+    LON: 32.3
+aggregators:
+  R1:
+    LAT: 43.2
+    LON: 30.1
+  R5:
+    LAT: 47.2
+    LON: 36.1
+connections:
+  - A1: R1
+  - A2: R4
+  - A3: R7
+  - C1: R3
+  - C2: R1
+  - C3: R1
+  - C4: R11
+  - C5: R5
+  - C6: R8
+  - C7: R9
+  - C8: R10
+  - P1: R4
+  - P2: R10
+  - P3: R2
+  - P4: R3
+  - P5: R6
+  - P6: R7
+  - R2: P3
+  - R2: R1
+  - R2: R4
+  - R2: R5
+  - R3: C1
+  - R3: P4
+  - R3: R1
+  - R3: R5
+  - R3: R6
+  - R3: R10
+  - R4: A2
+  - R4: P1
+  - R4: R2
+  - R4: R6
+  - R4: R8
+  - R4: R9
+  - R6: P5
+  - R6: R3
+  - R6: R5
+  - R6: R9
+  - R6: R10
+  - R7: A3
+  - R7: P6
+  - R7: R5
+  - R7: R8
+  - R8: C6
+  - R8: R1
+  - R8: R4
+  - R8: R7
+  - R8: R11
+  - R9: A4
+  - R9: C7
+  - R9: R1
+  - R9: R4
+  - R9: R6
+  - R10: C8
+  - R10: P2
+  - R10: R3
+  - R10: R5
+  - R10: R6
+  - R10: R11
+  - R11: C4
+  - R11: R8
+  - R11: R10
+  - R1: A1
+  - R1: C2
+  - R1: C3
+  - R1: R2
+  - R1: R3
+  - R1: R8
+  - R1: R9
+  - R5: C4
+  - R5: R2
+  - R5: R3
+  - R5: R6
+  - R5: R7
+  - R5: R10

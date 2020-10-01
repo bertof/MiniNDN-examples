@@ -1,0 +1,47 @@
+routers:
+  B:
+    LAT: 2
+    LON: 1
+  C:
+    LAT: 2
+    LON: 6
+  E:
+    LAT: 1
+    LON: 1
+  H:
+    LAT: 1
+    LON: 6
+  A:
+    LAT: 3
+    LON: 4
+producers:
+  J:
+    LAT: 0
+    LON: 1
+  K:
+    LAT: 0
+    LON: 6
+consumers:
+  D:
+    LAT: 1
+    LON: 0
+  G:
+    LAT: 1
+    LON: 5
+  F:
+    LAT: 1
+    LON: 2
+  I:
+    LAT: 1
+    LON: 7
+connections:
+  - A: B
+  - A: C
+  - B: D
+  - B: E
+  - B: F
+  - C: G
+  - C: H
+  - C: I
+  - J: E
+  - K: H

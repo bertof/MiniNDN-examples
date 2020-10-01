@@ -1,0 +1,5 @@
+pandas
+pyndn
+python-igraph
+pyyaml
+seaborn
